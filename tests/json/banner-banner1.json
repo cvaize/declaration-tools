@@ -1,0 +1,26 @@
+[
+  {
+    "href": "\/catalog\/825",
+    "title": "\u0421\u043e\u0431\u0435\u0440\u0438 \u0441\u0432\u043e\u0439 \u043c\u0438\u0440( 1)",
+    "src": "emizen_banner\/f\/r\/frame-791.png",
+    "src-mobile": "emizen_banner\/f\/r\/frame_808.png"
+  },
+  {
+    "href": "\/catalog\/84?sort=asc&page=1&category_id=84&price%5Bmin%5D=199&price%5Bmax%5D=999",
+    "title": "\u041c\u0430\u043b\u0435\u043d\u044c\u043a\u0438\u0435 \u0441\u044e\u0440\u043f\u0440\u0438\u0437\u044b (2)",
+    "src": "emizen_banner\/f\/r\/frame-798.png",
+    "src-mobile": "emizen_banner\/f\/r\/frame_810.png"
+  },
+  {
+    "href": "\/catalog\/710",
+    "title": "\u0412\u043e\u0437\u044c\u043c\u0438 \u0441 \u0441\u043e\u0431\u043e\u0439 (3)",
+    "src": "emizen_banner\/f\/r\/frame_792.png",
+    "src-mobile": "emizen_banner\/f\/r\/frame_809.png"
+  },
+  {
+    "href": "\/catalog\/6",
+    "title": "\u0434\u043e\u043f\u043e\u043b\u043d\u0438 \u043e\u0431\u0440\u0430\u0437 (4)",
+    "src": "emizen_banner\/f\/r\/frame-799.png",
+    "src-mobile": "emizen_banner\/f\/r\/frame_811.png"
+  }
+]

@@ -1,0 +1,692 @@
+{
+  "items": [
+    {
+      "id": 6,
+      "parent_id": 5,
+      "name": "\u0410\u043a\u0441\u0435\u0441\u0441\u0443\u0430\u0440\u044b",
+      "is_active": true,
+      "position": 1,
+      "level": 2,
+      "children": "29,64,67,996,1043,1067,1075,1083",
+      "created_at": "2021-12-01 15:53:10",
+      "updated_at": "2022-03-05 12:14:12",
+      "path": "1\/5\/6",
+      "available_sort_by": [],
+      "include_in_menu": true,
+      "custom_attributes": [
+        {
+          "attribute_code": "image",
+          "value": "\/media\/catalog\/category\/3.png"
+        },
+        {
+          "attribute_code": "display_mode",
+          "value": "PRODUCTS"
+        },
+        {
+          "attribute_code": "is_anchor",
+          "value": "1"
+        },
+        {
+          "attribute_code": "path",
+          "value": "1\/5\/6"
+        },
+        {
+          "attribute_code": "children_count",
+          "value": "165"
+        },
+        {
+          "attribute_code": "custom_use_parent_settings",
+          "value": "0"
+        },
+        {
+          "attribute_code": "custom_apply_to_products",
+          "value": "0"
+        },
+        {
+          "attribute_code": "url_key",
+          "value": "aksessuary"
+        },
+        {
+          "attribute_code": "url_path",
+          "value": "aksessuary"
+        }
+      ]
+    },
+    {
+      "id": 84,
+      "parent_id": 5,
+      "name": "\u0418\u0433\u0440\u0443\u0448\u043a\u0438",
+      "is_active": true,
+      "position": 2,
+      "level": 2,
+      "children": "85,91,100,111,118,119,126,127,128,129,140,141,142,143,144,145,151,152,153,161,175,179,180,1097",
+      "created_at": "2021-12-01 15:53:10",
+      "updated_at": "2022-03-05 12:14:12",
+      "path": "1\/5\/84",
+      "available_sort_by": [],
+      "include_in_menu": true,
+      "custom_attributes": [
+        {
+          "attribute_code": "image",
+          "value": "\/media\/catalog\/category\/toys.png"
+        },
+        {
+          "attribute_code": "display_mode",
+          "value": "PRODUCTS"
+        },
+        {
+          "attribute_code": "is_anchor",
+          "value": "1"
+        },
+        {
+          "attribute_code": "path",
+          "value": "1\/5\/84"
+        },
+        {
+          "attribute_code": "children_count",
+          "value": "117"
+        },
+        {
+          "attribute_code": "custom_use_parent_settings",
+          "value": "0"
+        },
+        {
+          "attribute_code": "custom_apply_to_products",
+          "value": "0"
+        },
+        {
+          "attribute_code": "url_key",
+          "value": "igrushki"
+        },
+        {
+          "attribute_code": "url_path",
+          "value": "igrushki"
+        }
+      ]
+    },
+    {
+      "id": 187,
+      "parent_id": 5,
+      "name": "\u041a\u0430\u043d\u0446\u0442\u043e\u0432\u0430\u0440\u044b",
+      "is_active": true,
+      "position": 3,
+      "level": 2,
+      "children": "188,200,203,210,218,221",
+      "created_at": "2021-12-01 15:53:10",
+      "updated_at": "2022-03-05 12:14:12",
+      "path": "1\/5\/187",
+      "available_sort_by": [],
+      "include_in_menu": true,
+      "custom_attributes": [
+        {
+          "attribute_code": "image",
+          "value": "\/media\/catalog\/category\/kons.png"
+        },
+        {
+          "attribute_code": "display_mode",
+          "value": "PRODUCTS"
+        },
+        {
+          "attribute_code": "is_anchor",
+          "value": "1"
+        },
+        {
+          "attribute_code": "path",
+          "value": "1\/5\/187"
+        },
+        {
+          "attribute_code": "children_count",
+          "value": "56"
+        },
+        {
+          "attribute_code": "custom_use_parent_settings",
+          "value": "0"
+        },
+        {
+          "attribute_code": "custom_apply_to_products",
+          "value": "0"
+        },
+        {
+          "attribute_code": "url_key",
+          "value": "kanctovary"
+        },
+        {
+          "attribute_code": "url_path",
+          "value": "kanctovary"
+        }
+      ]
+    },
+    {
+      "id": 234,
+      "parent_id": 5,
+      "name": "\u041a\u043d\u0438\u0433\u0438",
+      "is_active": true,
+      "position": 4,
+      "level": 2,
+      "children": "235,243,244,253,268,277",
+      "created_at": "2021-12-01 15:53:10",
+      "updated_at": "2022-03-05 12:14:12",
+      "path": "1\/5\/234",
+      "available_sort_by": [],
+      "include_in_menu": true,
+      "custom_attributes": [
+        {
+          "attribute_code": "image",
+          "value": "\/media\/catalog\/category\/book.png"
+        },
+        {
+          "attribute_code": "display_mode",
+          "value": "PRODUCTS"
+        },
+        {
+          "attribute_code": "is_anchor",
+          "value": "1"
+        },
+        {
+          "attribute_code": "path",
+          "value": "1\/5\/234"
+        },
+        {
+          "attribute_code": "children_count",
+          "value": "52"
+        },
+        {
+          "attribute_code": "custom_use_parent_settings",
+          "value": "0"
+        },
+        {
+          "attribute_code": "custom_apply_to_products",
+          "value": "0"
+        },
+        {
+          "attribute_code": "url_key",
+          "value": "knigi"
+        },
+        {
+          "attribute_code": "url_path",
+          "value": "knigi"
+        }
+      ]
+    },
+    {
+      "id": 283,
+      "parent_id": 5,
+      "name": "\u041a\u0440\u0430\u0441\u043e\u0442\u0430 \u0438 \u0443\u0445\u043e\u0434",
+      "is_active": true,
+      "position": 5,
+      "level": 2,
+      "children": "284,297,302,309,320,335,344,358,1126",
+      "created_at": "2021-12-01 15:53:10",
+      "updated_at": "2022-03-05 12:14:12",
+      "path": "1\/5\/283",
+      "available_sort_by": [],
+      "include_in_menu": true,
+      "custom_attributes": [
+        {
+          "attribute_code": "image",
+          "value": "\/media\/catalog\/category\/beutifal.png"
+        },
+        {
+          "attribute_code": "display_mode",
+          "value": "PRODUCTS"
+        },
+        {
+          "attribute_code": "is_anchor",
+          "value": "1"
+        },
+        {
+          "attribute_code": "path",
+          "value": "1\/5\/283"
+        },
+        {
+          "attribute_code": "children_count",
+          "value": "121"
+        },
+        {
+          "attribute_code": "custom_use_parent_settings",
+          "value": "0"
+        },
+        {
+          "attribute_code": "custom_apply_to_products",
+          "value": "0"
+        },
+        {
+          "attribute_code": "url_key",
+          "value": "krasota-i-uhod"
+        },
+        {
+          "attribute_code": "url_path",
+          "value": "krasota-i-uhod"
+        }
+      ]
+    },
+    {
+      "id": 389,
+      "parent_id": 5,
+      "name": "\u041e\u0431\u0443\u0432\u044c",
+      "is_active": true,
+      "position": 6,
+      "level": 2,
+      "children": "390,433",
+      "created_at": "2021-12-01 15:53:10",
+      "updated_at": "2022-03-05 12:14:12",
+      "path": "1\/5\/389",
+      "available_sort_by": [],
+      "include_in_menu": true,
+      "custom_attributes": [
+        {
+          "attribute_code": "image",
+          "value": "\/media\/catalog\/category\/cross.png"
+        },
+        {
+          "attribute_code": "display_mode",
+          "value": "PRODUCTS"
+        },
+        {
+          "attribute_code": "is_anchor",
+          "value": "1"
+        },
+        {
+          "attribute_code": "path",
+          "value": "1\/5\/389"
+        },
+        {
+          "attribute_code": "children_count",
+          "value": "125"
+        },
+        {
+          "attribute_code": "custom_use_parent_settings",
+          "value": "0"
+        },
+        {
+          "attribute_code": "custom_apply_to_products",
+          "value": "0"
+        },
+        {
+          "attribute_code": "url_key",
+          "value": "obuv"
+        },
+        {
+          "attribute_code": "url_path",
+          "value": "obuv"
+        }
+      ]
+    },
+    {
+      "id": 473,
+      "parent_id": 5,
+      "name": "\u041e\u0434\u0435\u0436\u0434\u0430",
+      "is_active": true,
+      "position": 7,
+      "level": 2,
+      "children": "474,586,678,681,1277",
+      "created_at": "2021-12-01 15:53:10",
+      "updated_at": "2022-03-05 12:14:12",
+      "path": "1\/5\/473",
+      "available_sort_by": [],
+      "include_in_menu": true,
+      "custom_attributes": [
+        {
+          "attribute_code": "image",
+          "value": "\/media\/catalog\/category\/cloves.png"
+        },
+        {
+          "attribute_code": "display_mode",
+          "value": "PRODUCTS"
+        },
+        {
+          "attribute_code": "is_anchor",
+          "value": "1"
+        },
+        {
+          "attribute_code": "path",
+          "value": "1\/5\/473"
+        },
+        {
+          "attribute_code": "children_count",
+          "value": "352"
+        },
+        {
+          "attribute_code": "custom_use_parent_settings",
+          "value": "0"
+        },
+        {
+          "attribute_code": "custom_apply_to_products",
+          "value": "0"
+        },
+        {
+          "attribute_code": "url_key",
+          "value": "odezhda"
+        },
+        {
+          "attribute_code": "url_path",
+          "value": "odezhda"
+        }
+      ]
+    },
+    {
+      "id": 710,
+      "parent_id": 5,
+      "name": "\u0421\u043f\u043e\u0440\u0442",
+      "is_active": true,
+      "position": 8,
+      "level": 2,
+      "children": "711,720,727,736,745,761,764,767,770,781,788,1312",
+      "created_at": "2021-12-01 15:53:10",
+      "updated_at": "2022-03-05 12:14:12",
+      "path": "1\/5\/710",
+      "available_sort_by": [],
+      "include_in_menu": true,
+      "custom_attributes": [
+        {
+          "attribute_code": "image",
+          "value": "\/media\/catalog\/category\/sport.png"
+        },
+        {
+          "attribute_code": "display_mode",
+          "value": "PRODUCTS"
+        },
+        {
+          "attribute_code": "is_anchor",
+          "value": "1"
+        },
+        {
+          "attribute_code": "path",
+          "value": "1\/5\/710"
+        },
+        {
+          "attribute_code": "children_count",
+          "value": "121"
+        },
+        {
+          "attribute_code": "custom_use_parent_settings",
+          "value": "0"
+        },
+        {
+          "attribute_code": "custom_apply_to_products",
+          "value": "0"
+        },
+        {
+          "attribute_code": "url_key",
+          "value": "sport"
+        },
+        {
+          "attribute_code": "url_path",
+          "value": "sport"
+        }
+      ]
+    },
+    {
+      "id": 796,
+      "parent_id": 5,
+      "name": "\u0422\u0432\u043e\u0440\u0447\u0435\u0441\u0442\u0432\u043e",
+      "is_active": true,
+      "position": 9,
+      "level": 2,
+      "children": "1328,1329,797,807,820,825,830,845,854",
+      "created_at": "2021-12-01 15:53:10",
+      "updated_at": "2022-03-05 12:14:12",
+      "path": "1\/5\/796",
+      "available_sort_by": [],
+      "include_in_menu": true,
+      "custom_attributes": [
+        {
+          "attribute_code": "image",
+          "value": "\/media\/catalog\/category\/tvorchestvo.png"
+        },
+        {
+          "attribute_code": "display_mode",
+          "value": "PRODUCTS"
+        },
+        {
+          "attribute_code": "is_anchor",
+          "value": "1"
+        },
+        {
+          "attribute_code": "path",
+          "value": "1\/5\/796"
+        },
+        {
+          "attribute_code": "children_count",
+          "value": "72"
+        },
+        {
+          "attribute_code": "custom_use_parent_settings",
+          "value": "0"
+        },
+        {
+          "attribute_code": "custom_apply_to_products",
+          "value": "0"
+        },
+        {
+          "attribute_code": "url_key",
+          "value": "tvorchestvo"
+        },
+        {
+          "attribute_code": "url_path",
+          "value": "tvorchestvo"
+        }
+      ]
+    },
+    {
+      "id": 857,
+      "parent_id": 5,
+      "name": "\u0422\u043e\u0432\u0430\u0440\u044b \u0434\u043b\u044f \u0434\u043e\u043c\u0430",
+      "is_active": true,
+      "position": 10,
+      "level": 2,
+      "children": "858,872,891,900,910,919,925",
+      "created_at": "2021-12-01 15:53:10",
+      "updated_at": "2022-03-05 12:14:12",
+      "path": "1\/5\/857",
+      "available_sort_by": [],
+      "include_in_menu": true,
+      "custom_attributes": [
+        {
+          "attribute_code": "image",
+          "value": "\/media\/catalog\/category\/interier.png"
+        },
+        {
+          "attribute_code": "display_mode",
+          "value": "PRODUCTS"
+        },
+        {
+          "attribute_code": "is_anchor",
+          "value": "1"
+        },
+        {
+          "attribute_code": "path",
+          "value": "1\/5\/857"
+        },
+        {
+          "attribute_code": "children_count",
+          "value": "92"
+        },
+        {
+          "attribute_code": "custom_use_parent_settings",
+          "value": "0"
+        },
+        {
+          "attribute_code": "custom_apply_to_products",
+          "value": "0"
+        },
+        {
+          "attribute_code": "url_key",
+          "value": "tovary-dlja-doma"
+        },
+        {
+          "attribute_code": "url_path",
+          "value": "tovary-dlja-doma"
+        }
+      ]
+    },
+    {
+      "id": 934,
+      "parent_id": 5,
+      "name": "\u042d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u0438\u043a\u0430",
+      "is_active": true,
+      "position": 11,
+      "level": 2,
+      "children": "935,941,948,951,959,963,968,972,978,986",
+      "created_at": "2021-12-01 15:53:10",
+      "updated_at": "2022-03-05 12:14:12",
+      "path": "1\/5\/934",
+      "available_sort_by": [],
+      "include_in_menu": true,
+      "custom_attributes": [
+        {
+          "attribute_code": "image",
+          "value": "\/media\/catalog\/category\/electronik.png"
+        },
+        {
+          "attribute_code": "display_mode",
+          "value": "PRODUCTS"
+        },
+        {
+          "attribute_code": "is_anchor",
+          "value": "1"
+        },
+        {
+          "attribute_code": "path",
+          "value": "1\/5\/934"
+        },
+        {
+          "attribute_code": "children_count",
+          "value": "65"
+        },
+        {
+          "attribute_code": "custom_use_parent_settings",
+          "value": "0"
+        },
+        {
+          "attribute_code": "custom_apply_to_products",
+          "value": "0"
+        },
+        {
+          "attribute_code": "url_key",
+          "value": "jelektronika"
+        },
+        {
+          "attribute_code": "url_path",
+          "value": "jelektronika"
+        }
+      ]
+    },
+    {
+      "id": 993,
+      "parent_id": 5,
+      "name": "\u0413\u0435\u0439\u043c\u0438\u043d\u0433",
+      "is_active": true,
+      "position": 12,
+      "level": 2,
+      "children": "",
+      "created_at": "2021-12-01 15:53:10",
+      "updated_at": "2022-03-05 12:14:12",
+      "path": "1\/5\/993",
+      "available_sort_by": [],
+      "include_in_menu": true,
+      "custom_attributes": [
+        {
+          "attribute_code": "image",
+          "value": "\/media\/catalog\/category\/game.png"
+        },
+        {
+          "attribute_code": "display_mode",
+          "value": "PRODUCTS"
+        },
+        {
+          "attribute_code": "is_anchor",
+          "value": "1"
+        },
+        {
+          "attribute_code": "path",
+          "value": "1\/5\/993"
+        },
+        {
+          "attribute_code": "children_count",
+          "value": "0"
+        },
+        {
+          "attribute_code": "custom_use_parent_settings",
+          "value": "0"
+        },
+        {
+          "attribute_code": "custom_apply_to_products",
+          "value": "0"
+        },
+        {
+          "attribute_code": "url_key",
+          "value": "gejming"
+        },
+        {
+          "attribute_code": "url_path",
+          "value": "gejming"
+        }
+      ]
+    },
+    {
+      "id": 1363,
+      "parent_id": 5,
+      "name": "\u041a\u043e\u0440\u0437\u0438\u043d\u0430",
+      "is_active": false,
+      "position": 13,
+      "level": 2,
+      "children": "",
+      "created_at": "2022-02-14 20:10:33",
+      "updated_at": "2022-03-05 12:14:12",
+      "path": "1\/5\/1363",
+      "available_sort_by": [],
+      "include_in_menu": false,
+      "custom_attributes": [
+        {
+          "attribute_code": "display_mode",
+          "value": "PRODUCTS"
+        },
+        {
+          "attribute_code": "is_anchor",
+          "value": "1"
+        },
+        {
+          "attribute_code": "path",
+          "value": "1\/5\/1363"
+        },
+        {
+          "attribute_code": "children_count",
+          "value": "0"
+        },
+        {
+          "attribute_code": "custom_use_parent_settings",
+          "value": "0"
+        },
+        {
+          "attribute_code": "custom_apply_to_products",
+          "value": "0"
+        },
+        {
+          "attribute_code": "url_key",
+          "value": "korzina"
+        },
+        {
+          "attribute_code": "url_path",
+          "value": "korzina"
+        }
+      ]
+    }
+  ],
+  "search_criteria": {
+    "filter_groups": [
+      {
+        "filters": [
+          {
+            "field": "parent_id",
+            "value": "5",
+            "condition_type": "eq"
+          }
+        ]
+      }
+    ],
+    "page_size": 100,
+    "current_page": 1
+  },
+  "total_count": 13
+}
