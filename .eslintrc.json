@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "airbnb-base",
+    "plugin:promise/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "warnOnUnsupportedTypeScriptVersion": false
+  },
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true
+ },
+  "plugins": [
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}
