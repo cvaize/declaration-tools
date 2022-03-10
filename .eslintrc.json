@@ -24,6 +24,7 @@
     "no-shadow": 0,
     "import/extensions": 0,
     "import/no-unresolved": 0,
-    "@typescript-eslint/no-explicit-any": 0
+    "@typescript-eslint/no-explicit-any": 0,
+    "no-loop-func": 0
   }
 }
