@@ -5,8 +5,8 @@ export enum IdType {
 	boolean = 'boolean',
 	null = 'null',
 	undefined = 'undefined',
-	object = '{}',
-	array = '[]',
+	object = 'object',
+	array = 'array',
 	any = 'any',
 }
 
@@ -35,6 +35,29 @@ export const identifyType = (data: any): IdType => {
 
 	return result;
 };
+
+type SchemaItem = {
+	children: string[];
+};
+
+type Schema = {
+	[key: string]: SchemaItem;
+};
+
+type SchemaResponse = {
+	schema: Schema;
+};
+
+const processingSchema = (data: any, schemaResponse: SchemaResponse): SchemaResponse => {
+	const type = identifyType(data);
+	if (!schemaResponse.schema[type]) {
+		schemaResponse.schema[type] = { children: [] };
+	}
+
+	return schemaResponse;
+};
+
+export const makeSchema = (data: any) => processingSchema(data, { schema: {} });
 
 export default {
 	identifyType,
