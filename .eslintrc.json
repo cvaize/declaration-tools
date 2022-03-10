@@ -20,6 +20,10 @@
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "no-shadow": 0,
+    "import/extensions": 0,
+    "import/no-unresolved": 0,
+    "@typescript-eslint/no-explicit-any": 0
   }
 }
