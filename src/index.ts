@@ -1,4 +1,4 @@
-import { get, set, intersection, concat, difference, uniq } from 'lodash';
+import { set, has, intersection, concat, difference, uniq } from 'lodash';
 
 // Строковое представление типов данных. Не поддерживается bigint, date, symbol, function и другие специальные объекты
 export enum IdType {
@@ -46,16 +46,35 @@ type SchemaResponse = {
 	schema: Schema;
 };
 
-const processingSchema = (data: any, schemaResponse: SchemaResponse, key: string): SchemaResponse => {
+enum SchemaErrorType {
+	// Новый ключ. По определенному пути найден ключ объекта, которого нет в схеме
+	key = 'key',
+	// Не совпал тип. По определенному пути найдены данные с новым типом
+	type = 'type',
+	// Нет ключа. По определенному пути должен быть ключ с данными, но его нет
+	undefined = 'undefined',
+}
+
+type SchemaError = {
+	key: string;
+	type: SchemaErrorType;
+};
+
+const schemaIterator = (
+	data: any,
+	schemaResponse: SchemaResponse,
+	key: string,
+	handle: (schemaResponse: SchemaResponse, key: string, place: number) => void
+): SchemaResponse => {
 	const type = identifyType(data);
 	const typeKey = `${key}.${type}`;
 
-	if (!get(schemaResponse, key)) {
-		set(schemaResponse, key, {});
+	if (!has(schemaResponse, key)) {
+		handle(schemaResponse, key, 1);
 	}
 
-	if (!get(schemaResponse, typeKey)) {
-		set(schemaResponse, typeKey, {});
+	if (!has(schemaResponse, typeKey)) {
+		handle(schemaResponse, typeKey, 2);
 	}
 
 	if (type === IdType.array) {
@@ -63,7 +82,7 @@ const processingSchema = (data: any, schemaResponse: SchemaResponse, key: string
 		let minimumKeys: string[] = [];
 		let keysMounted = false;
 		for (let i = 0; i < data.length; i += 1) {
-			processingSchema(data[i], schemaResponse, typeKey);
+			schemaIterator(data[i], schemaResponse, typeKey, handle);
 
 			// Обработка undefined ключей в объектах
 			if (identifyType(data[i]) === IdType.object) {
@@ -82,21 +101,58 @@ const processingSchema = (data: any, schemaResponse: SchemaResponse, key: string
 		const undefinedKeys = uniq(difference(maximumKeys, minimumKeys));
 
 		for (let i = 0; i < undefinedKeys.length; i += 1) {
-			set(schemaResponse, `${typeKey}.${IdType.object}.${undefinedKeys[i]}.${IdType.undefined}`, {});
+			handle(schemaResponse, `${typeKey}.${IdType.object}.${undefinedKeys[i]}.${IdType.undefined}`, 3);
 		}
 	} else if (type === IdType.object) {
 		const objectKeys = Object.keys(data);
 
 		for (let i = 0; i < objectKeys.length; i += 1) {
-			processingSchema(data[objectKeys[i]], schemaResponse, `${typeKey}.${objectKeys[i]}`);
+			schemaIterator(data[objectKeys[i]], schemaResponse, `${typeKey}.${objectKeys[i]}`, handle);
 		}
 	}
 
 	return schemaResponse;
 };
 
-export const makeSchema = (data: any) => processingSchema(data, { schema: {} }, 'schema');
+export const makeSchema = (data: any) => {
+	const schemaResponse: SchemaResponse = { schema: {} };
+
+	schemaIterator(data, schemaResponse, 'schema', (schemaResponse, key) => {
+		set(schemaResponse, key, {});
+	});
+
+	return schemaResponse;
+};
+
+export const checkSchema = (schema: Schema, data: any): SchemaError[] => {
+	const errors: SchemaError[] = [];
+	const schemaResponse: SchemaResponse = { schema };
+
+	schemaIterator(data, schemaResponse, 'schema', (schemaResponse, key, place) => {
+		if (place === 1) {
+			errors.push({
+				key,
+				type: SchemaErrorType.key,
+			});
+		} else if (place === 2) {
+			errors.push({
+				key,
+				type: SchemaErrorType.type,
+			});
+		} else if (place === 3) {
+			if (!has(schemaResponse, key)) {
+				errors.push({
+					key,
+					type: SchemaErrorType.type,
+				});
+			}
+		}
+	});
+
+	return errors;
+};
 
 export default {
 	identifyType,
+	makeSchema,
 };

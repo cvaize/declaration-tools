@@ -25,6 +25,7 @@
     "import/extensions": 0,
     "import/no-unresolved": 0,
     "@typescript-eslint/no-explicit-any": 0,
-    "no-loop-func": 0
+    "no-loop-func": 0,
+    "@typescript-eslint/ban-ts-comment": 0
   }
 }
