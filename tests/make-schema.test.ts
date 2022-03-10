@@ -2,7 +2,7 @@ import { makeSchema } from '../src';
 import usersSchemaResponse from './schemas/users';
 import usersData from './data/users';
 
-describe('Функция генерации схемы', () => {
+describe('Функция создания схемы', () => {
 	it('Схема пользователей', () => {
 		expect(makeSchema(usersData)).toEqual(usersSchemaResponse);
 	});

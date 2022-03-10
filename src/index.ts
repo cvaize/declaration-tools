@@ -1,4 +1,4 @@
-import { get, set } from 'lodash';
+import { get, set, intersection, concat, difference, uniq } from 'lodash';
 
 // Строковое представление типов данных. Не поддерживается bigint, date, symbol, function и другие специальные объекты
 export enum IdType {
@@ -59,14 +59,36 @@ const processingSchema = (data: any, schemaResponse: SchemaResponse, key: string
 	}
 
 	if (type === IdType.array) {
+		let maximumKeys: string[] = [];
+		let minimumKeys: string[] = [];
+		let keysMounted = false;
 		for (let i = 0; i < data.length; i += 1) {
-			processingSchema(data[i], schemaResponse, `${key}.array`);
+			processingSchema(data[i], schemaResponse, typeKey);
+
+			// Обработка undefined ключей в объектах
+			if (identifyType(data[i]) === IdType.object) {
+				if (keysMounted) {
+					const objectKeys = Object.keys(data[i]);
+					minimumKeys = intersection(minimumKeys, objectKeys);
+					maximumKeys = concat(maximumKeys, difference(maximumKeys, objectKeys));
+				} else {
+					minimumKeys = Object.keys(data[i]);
+					maximumKeys = minimumKeys;
+					keysMounted = true;
+				}
+			}
+		}
+
+		const undefinedKeys = uniq(difference(maximumKeys, minimumKeys));
+
+		for (let i = 0; i < undefinedKeys.length; i += 1) {
+			set(schemaResponse, `${typeKey}.${IdType.object}.${undefinedKeys[i]}.${IdType.undefined}`, {});
 		}
 	} else if (type === IdType.object) {
 		const objectKeys = Object.keys(data);
 
 		for (let i = 0; i < objectKeys.length; i += 1) {
-			processingSchema(data[objectKeys[i]], schemaResponse, `${key}.object.${objectKeys[i]}`);
+			processingSchema(data[objectKeys[i]], schemaResponse, `${typeKey}.${objectKeys[i]}`);
 		}
 	}
 
