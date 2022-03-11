@@ -12,6 +12,13 @@ export enum IdType {
 	any = 'any',
 }
 
+enum Place {
+	Id1,
+	Id2,
+	Id3,
+	Id4,
+}
+
 // Определить тип данных, который передан параметром
 export const identifyType = (data: any): IdType => {
 	let result = IdType.any;
@@ -42,6 +49,7 @@ export type Schema = {
 	[key: string]: Schema;
 };
 
+const schemaKey = 'schema';
 export type SchemaResponse = {
 	schema: Schema;
 };
@@ -64,17 +72,17 @@ const dataIterator = (
 	data: any,
 	schemaResponse: SchemaResponse,
 	key: string,
-	handle: (schemaResponse: SchemaResponse, key: string, place: number) => void
+	handle: (schemaResponse: SchemaResponse, key: string, place: Place) => void
 ): SchemaResponse => {
 	const type = identifyType(data);
 	const typeKey = `${key}.${type}`;
 
 	if (!has(schemaResponse, key)) {
-		handle(schemaResponse, key, 1);
+		handle(schemaResponse, key, Place.Id1);
 	}
 
 	if (!has(schemaResponse, typeKey)) {
-		handle(schemaResponse, typeKey, 2);
+		handle(schemaResponse, typeKey, Place.Id2);
 	}
 
 	if (type === IdType.array) {
@@ -101,7 +109,7 @@ const dataIterator = (
 		const undefinedKeys = uniq(difference(maximumKeys, minimumKeys));
 
 		for (let i = 0; i < undefinedKeys.length; i += 1) {
-			handle(schemaResponse, `${typeKey}.${IdType.object}.${undefinedKeys[i]}.${IdType.undefined}`, 3);
+			handle(schemaResponse, `${typeKey}.${IdType.object}.${undefinedKeys[i]}.${IdType.undefined}`, Place.Id3);
 		}
 	} else if (type === IdType.object) {
 		const objectKeys = Object.keys(data);
@@ -118,14 +126,14 @@ const checkSchemaOnlyUndefinedIterator = (
 	data: any,
 	schemaResponse: SchemaResponse,
 	key: string,
-	handle: (schemaResponse: SchemaResponse, key: string) => void
+	handle: (schemaResponse: SchemaResponse, key: string, place: Place) => void
 ) => {
 	const type = identifyType(data);
 	const typeKey = `${key}.${type}`;
 	const object = get(schemaResponse, key);
 
 	if (type === IdType.undefined && !object[IdType.undefined]) {
-		handle(schemaResponse, key);
+		handle(schemaResponse, key, Place.Id4);
 	} else {
 		// Функция проверяет только на undefined, если тип не совпал, то ранее это уже было определено
 		// eslint-disable-next-line no-lonely-if
@@ -148,11 +156,52 @@ const checkSchemaOnlyUndefinedIterator = (
 	}
 };
 
+const handleSetType = (schemaResponse: SchemaResponse, key: string, place: Place) => {
+	set(schemaResponse, key, {});
+};
+
+const handleError = (
+	errors: SchemaError[],
+	schemaResponse: SchemaResponse,
+	key: string,
+	undefinedKeys: string[],
+	place: Place
+) => {
+	if (place === Place.Id1) {
+		undefinedKeys.push(key);
+		errors.push({
+			key,
+			type: SchemaErrorType.key,
+		});
+	} else if (place === Place.Id2) {
+		if (!undefinedKeys.find((undefinedKey) => key.indexOf(undefinedKey) === 0)) {
+			errors.push({
+				key,
+				type: SchemaErrorType.type,
+			});
+		}
+	} else if (place === Place.Id3) {
+		if (!has(schemaResponse, key) && !undefinedKeys.find((undefinedKey) => key.indexOf(undefinedKey) === 0)) {
+			errors.push({
+				key,
+				type: SchemaErrorType.type,
+			});
+		}
+	} else if (place === Place.Id4) {
+		if (!errors.find((error) => error.key.indexOf(key) === 0)) {
+			errors.push({
+				key,
+				type: SchemaErrorType.undefined,
+			});
+		}
+	}
+};
+
 export const makeSchema = (data: any) => {
 	const schemaResponse: SchemaResponse = { schema: {} };
 
-	dataIterator(data, schemaResponse, 'schema', (schemaResponse, key) => {
-		set(schemaResponse, key, {});
+	dataIterator(data, schemaResponse, schemaKey, (schemaResponse, key, place) => {
+		handleSetType(schemaResponse, key, place);
 	});
 
 	return schemaResponse;
@@ -163,36 +212,11 @@ export const checkSchema = (schema: Schema, data: any): SchemaError[] => {
 	const schemaResponse: SchemaResponse = { schema };
 
 	const undefinedKeys: string[] = [];
-	dataIterator(data, schemaResponse, 'schema', (schemaResponse, key, place) => {
-		if (place === 1) {
-			undefinedKeys.push(key);
-			errors.push({
-				key,
-				type: SchemaErrorType.key,
-			});
-		} else if (place === 2) {
-			if (!undefinedKeys.find((undefinedKey) => key.indexOf(undefinedKey) === 0)) {
-				errors.push({
-					key,
-					type: SchemaErrorType.type,
-				});
-			}
-		} else if (place === 3) {
-			if (!has(schemaResponse, key) && !undefinedKeys.find((undefinedKey) => key.indexOf(undefinedKey) === 0)) {
-				errors.push({
-					key,
-					type: SchemaErrorType.type,
-				});
-			}
-		}
+	dataIterator(data, schemaResponse, schemaKey, (schemaResponse, key, place) => {
+		handleError(errors, schemaResponse, key, undefinedKeys, place);
 	});
-	checkSchemaOnlyUndefinedIterator(data, schemaResponse, 'schema', (schemaResponse, key) => {
-		if (!errors.find((error) => error.key.indexOf(key) === 0)) {
-			errors.push({
-				key,
-				type: SchemaErrorType.undefined,
-			});
-		}
+	checkSchemaOnlyUndefinedIterator(data, schemaResponse, schemaKey, (schemaResponse, key, place) => {
+		handleError(errors, schemaResponse, key, undefinedKeys, place);
 	});
 
 	return errors;
