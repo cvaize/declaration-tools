@@ -1,4 +1,6 @@
-export const usersSchemaResponse = {
+import { SchemaResponse } from '../../src';
+
+export const usersSchemaResponse: SchemaResponse = {
 	schema: {
 		array: {
 			object: {

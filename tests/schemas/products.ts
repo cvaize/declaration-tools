@@ -1,4 +1,6 @@
-export const productsSchemaResponse = {
+import { SchemaResponse } from '../../src';
+
+export const productsSchemaResponse: SchemaResponse = {
 	schema: {
 		object: {
 			items: {

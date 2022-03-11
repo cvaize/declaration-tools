@@ -38,15 +38,15 @@ export const identifyType = (data: any): IdType => {
 	return result;
 };
 
-type Schema = {
+export type Schema = {
 	[key: string]: Schema;
 };
 
-type SchemaResponse = {
+export type SchemaResponse = {
 	schema: Schema;
 };
 
-enum SchemaErrorType {
+export enum SchemaErrorType {
 	// Новый ключ. По определенному пути найден ключ объекта, которого нет в схеме
 	key = 'key',
 	// Не совпал тип. По определенному пути найдены данные с новым типом
@@ -55,7 +55,7 @@ enum SchemaErrorType {
 	undefined = 'undefined',
 }
 
-type SchemaError = {
+export type SchemaError = {
 	key: string;
 	type: SchemaErrorType;
 };
@@ -128,19 +128,23 @@ export const checkSchema = (schema: Schema, data: any): SchemaError[] => {
 	const errors: SchemaError[] = [];
 	const schemaResponse: SchemaResponse = { schema };
 
+	const undefinedKeys: string[] = [];
 	schemaIterator(data, schemaResponse, 'schema', (schemaResponse, key, place) => {
 		if (place === 1) {
+			undefinedKeys.push(key);
 			errors.push({
 				key,
 				type: SchemaErrorType.key,
 			});
 		} else if (place === 2) {
-			errors.push({
-				key,
-				type: SchemaErrorType.type,
-			});
+			if (!undefinedKeys.find((undefinedKey) => key.indexOf(undefinedKey) === 0)) {
+				errors.push({
+					key,
+					type: SchemaErrorType.type,
+				});
+			}
 		} else if (place === 3) {
-			if (!has(schemaResponse, key)) {
+			if (!has(schemaResponse, key) && !undefinedKeys.find((undefinedKey) => key.indexOf(undefinedKey) === 0)) {
 				errors.push({
 					key,
 					type: SchemaErrorType.type,
