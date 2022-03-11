@@ -1,4 +1,4 @@
-import { set, has, intersection, concat, difference, uniq } from 'lodash';
+import { get, set, has, intersection, concat, difference, uniq } from 'lodash';
 
 // Строковое представление типов данных. Не поддерживается bigint, date, symbol, function и другие специальные объекты
 export enum IdType {
@@ -49,7 +49,7 @@ export type SchemaResponse = {
 export enum SchemaErrorType {
 	// Новый ключ. По определенному пути найден ключ объекта, которого нет в схеме
 	key = 'key',
-	// Не совпал тип. По определенному пути найдены данные с новым типом
+	// Не совпал тип. Ключ со значением undefined, тоже сюда подходит По определенному пути найдены данные с новым типом
 	type = 'type',
 	// Нет ключа. По определенному пути должен быть ключ с данными, но его нет
 	undefined = 'undefined',
@@ -60,7 +60,7 @@ export type SchemaError = {
 	type: SchemaErrorType;
 };
 
-const schemaIterator = (
+const dataIterator = (
 	data: any,
 	schemaResponse: SchemaResponse,
 	key: string,
@@ -82,7 +82,7 @@ const schemaIterator = (
 		let minimumKeys: string[] = [];
 		let keysMounted = false;
 		for (let i = 0; i < data.length; i += 1) {
-			schemaIterator(data[i], schemaResponse, typeKey, handle);
+			dataIterator(data[i], schemaResponse, typeKey, handle);
 
 			// Обработка undefined ключей в объектах
 			if (identifyType(data[i]) === IdType.object) {
@@ -107,17 +107,51 @@ const schemaIterator = (
 		const objectKeys = Object.keys(data);
 
 		for (let i = 0; i < objectKeys.length; i += 1) {
-			schemaIterator(data[objectKeys[i]], schemaResponse, `${typeKey}.${objectKeys[i]}`, handle);
+			dataIterator(data[objectKeys[i]], schemaResponse, `${typeKey}.${objectKeys[i]}`, handle);
 		}
 	}
 
 	return schemaResponse;
 };
 
+const checkSchemaOnlyUndefinedIterator = (
+	data: any,
+	schemaResponse: SchemaResponse,
+	key: string,
+	handle: (schemaResponse: SchemaResponse, key: string) => void
+) => {
+	const type = identifyType(data);
+	const typeKey = `${key}.${type}`;
+	const object = get(schemaResponse, key);
+
+	if (type === IdType.undefined && !object[IdType.undefined]) {
+		handle(schemaResponse, key);
+	} else {
+		// Функция проверяет только на undefined, если тип не совпал, то ранее это уже было определено
+		// eslint-disable-next-line no-lonely-if
+		if (type === IdType.array && object[IdType.array]) {
+			for (let i = 0; i < data.length; i += 1) {
+				checkSchemaOnlyUndefinedIterator(data[i], schemaResponse, typeKey, handle);
+			}
+		} else if (type === IdType.object && object[IdType.object]) {
+			const objectKeys = Object.keys(object[IdType.object]);
+
+			for (let i = 0; i < objectKeys.length; i += 1) {
+				checkSchemaOnlyUndefinedIterator(
+					data[objectKeys[i]],
+					schemaResponse,
+					`${typeKey}.${objectKeys[i]}`,
+					handle
+				);
+			}
+		}
+	}
+};
+
 export const makeSchema = (data: any) => {
 	const schemaResponse: SchemaResponse = { schema: {} };
 
-	schemaIterator(data, schemaResponse, 'schema', (schemaResponse, key) => {
+	dataIterator(data, schemaResponse, 'schema', (schemaResponse, key) => {
 		set(schemaResponse, key, {});
 	});
 
@@ -129,7 +163,7 @@ export const checkSchema = (schema: Schema, data: any): SchemaError[] => {
 	const schemaResponse: SchemaResponse = { schema };
 
 	const undefinedKeys: string[] = [];
-	schemaIterator(data, schemaResponse, 'schema', (schemaResponse, key, place) => {
+	dataIterator(data, schemaResponse, 'schema', (schemaResponse, key, place) => {
 		if (place === 1) {
 			undefinedKeys.push(key);
 			errors.push({
@@ -150,6 +184,14 @@ export const checkSchema = (schema: Schema, data: any): SchemaError[] => {
 					type: SchemaErrorType.type,
 				});
 			}
+		}
+	});
+	checkSchemaOnlyUndefinedIterator(data, schemaResponse, 'schema', (schemaResponse, key) => {
+		if (!errors.find((error) => error.key.indexOf(key) === 0)) {
+			errors.push({
+				key,
+				type: SchemaErrorType.undefined,
+			});
 		}
 	});
 

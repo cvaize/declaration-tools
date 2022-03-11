@@ -70,14 +70,39 @@ describe('Функция проверки схемы', () => {
 		]);
 	});
 	it('Проверка на отсутствие ключей', () => {
-		const data = cloneDeep(originalData);
+		let data = cloneDeep(originalData);
 		delete data[0].group_id;
-		// @ts-ignore
-		console.log(checkSchema(schema, data));
-		// expect(checkSchema(schema, data)).toEqual([
-		// 	{ key: 'schema.array.object.id.string', type: 'type' },
-		// 	{ key: 'schema.array.object.group_id.string', type: 'type' },
-		// ]);
+		expect(checkSchema(schema, data)).toEqual([{ key: 'schema.array.object.group_id', type: 'undefined' }]);
+
+		data = cloneDeep(originalData);
+		delete data[0].updated_at;
+		expect(checkSchema(schema, data)).toEqual([]);
+
+		data = cloneDeep(originalData);
+		delete data[0].addresses;
+		expect(checkSchema(schema, data)).toEqual([{ key: 'schema.array.object.addresses', type: 'undefined' }]);
+
+		data = cloneDeep(originalData);
+		delete data[0].created_at;
+		expect(checkSchema(schema, data)).toEqual([{ key: 'schema.array.object.created_at', type: 'undefined' }]);
+
+		data = cloneDeep(originalData);
+		delete data[0].dynamic[0].home;
+		expect(checkSchema(schema, data)).toEqual([
+			{
+				key: 'schema.array.object.dynamic.array.object.home',
+				type: 'undefined',
+			},
+		]);
+
+		data = cloneDeep(originalData);
+		delete data[1].extension_attributes.is_subscribed;
+		expect(checkSchema(schema, data)).toEqual([
+			{
+				key: 'schema.array.object.extension_attributes.object.is_subscribed',
+				type: 'undefined',
+			},
+		]);
 	});
 });
 
