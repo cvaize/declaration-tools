@@ -72,7 +72,9 @@ describe('Функция проверки схемы', () => {
 	it('Проверка на отсутствие ключей', () => {
 		let data = cloneDeep(originalData);
 		delete data[0].group_id;
-		expect(checkSchema(schema, data)).toEqual([{ key: 'schema.array.object.group_id', type: 'undefined' }]);
+		expect(checkSchema(schema, data)).toEqual([
+			{ key: 'schema.array.object.group_id', type: SchemaErrorType.undefined },
+		]);
 
 		data = cloneDeep(originalData);
 		delete data[0].updated_at;
@@ -80,18 +82,22 @@ describe('Функция проверки схемы', () => {
 
 		data = cloneDeep(originalData);
 		delete data[0].addresses;
-		expect(checkSchema(schema, data)).toEqual([{ key: 'schema.array.object.addresses', type: 'undefined' }]);
+		expect(checkSchema(schema, data)).toEqual([
+			{ key: 'schema.array.object.addresses', type: SchemaErrorType.undefined },
+		]);
 
 		data = cloneDeep(originalData);
 		delete data[0].created_at;
-		expect(checkSchema(schema, data)).toEqual([{ key: 'schema.array.object.created_at', type: 'undefined' }]);
+		expect(checkSchema(schema, data)).toEqual([
+			{ key: 'schema.array.object.created_at', type: SchemaErrorType.undefined },
+		]);
 
 		data = cloneDeep(originalData);
 		delete data[0].dynamic[0].home;
 		expect(checkSchema(schema, data)).toEqual([
 			{
 				key: 'schema.array.object.dynamic.array.object.home',
-				type: 'undefined',
+				type: SchemaErrorType.undefined,
 			},
 		]);
 
@@ -100,7 +106,7 @@ describe('Функция проверки схемы', () => {
 		expect(checkSchema(schema, data)).toEqual([
 			{
 				key: 'schema.array.object.extension_attributes.object.is_subscribed',
-				type: 'undefined',
+				type: SchemaErrorType.undefined,
 			},
 		]);
 	});
