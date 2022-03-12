@@ -1,6 +1,6 @@
-import { SchemaResponse } from '../../src';
+import { Schema } from '../../src';
 
-export const pointsSchemaResponse: SchemaResponse = {
+export const pointsSchema: Schema = {
 	schema: {
 		array: {
 			object: {
@@ -58,4 +58,4 @@ export const pointsSchemaResponse: SchemaResponse = {
 	},
 };
 
-export default pointsSchemaResponse;
+export default pointsSchema;

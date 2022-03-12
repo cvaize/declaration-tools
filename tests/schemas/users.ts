@@ -1,6 +1,6 @@
-import { SchemaResponse } from '../../src';
+import { Schema } from '../../src';
 
-export const usersSchemaResponse: SchemaResponse = {
+export const usersSchema: Schema = {
 	schema: {
 		array: {
 			object: {
@@ -69,4 +69,4 @@ export const usersSchemaResponse: SchemaResponse = {
 	},
 };
 
-export default usersSchemaResponse;
+export default usersSchema;
