@@ -213,4 +213,5 @@ export const checkSchema = (schema: Schema, data: any): SchemaError[] => {
 export default {
 	identifyType,
 	makeSchema,
+	checkSchema,
 };

@@ -1,6 +1,6 @@
 {
   "name": "declaration-tools",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Инструменты для декларативного программирования.",
   "main": "src/index.ts",
   "scripts": {
