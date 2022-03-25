@@ -1,6 +1,4 @@
-import DeclarationTools from '../src';
-import identifyType = DeclarationTools.identifyType;
-import Type = DeclarationTools.Type;
+import { identifyType, Type } from '../src';
 
 describe('Функция определения типа данных на основе переданных данных', () => {
 	it('Определить тип: number', () => {

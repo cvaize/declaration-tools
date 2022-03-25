@@ -1,5 +1,4 @@
-import DeclarationTools from '../../src';
-import Schema = DeclarationTools.Schema;
+import { Schema } from '../../src';
 
 export const pointsSchema: Schema = {
 	schema: {

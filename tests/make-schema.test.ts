@@ -3,8 +3,7 @@ import productsSchema from './schemas/products';
 import pointsSchema from './schemas/points';
 import categoriesSchema from './schemas/categories';
 import bannerSchema from './schemas/banner';
-import DeclarationTools from '../src';
-import makeSchema = DeclarationTools.makeSchema;
+import { makeSchema } from '../src';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require('fs');
 

@@ -28,6 +28,9 @@ yarn-error.log*
 # vercel
 .vercel
 debug.ts
+debug.js
+./build/debug.ts
+./build/debug.js
 
 .*.swp
 ._*
