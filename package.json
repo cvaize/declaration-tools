@@ -4,8 +4,10 @@
   "description": "Инструменты для декларативного программирования.",
   "main": "src/index.ts",
   "scripts": {
-    "fix": "eslint \"tests/**\" --fix",
-    "test": "jest"
+    "lint": "eslint ./src/index.ts",
+    "lint-fix": "yarn lint --fix",
+    "test": "jest",
+    "build-ts": "tsc -d"
   },
   "author": "Dmitry Orlov",
   "license": "GPL-3.0-only",

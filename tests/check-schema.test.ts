@@ -1,6 +1,8 @@
 import { cloneDeep } from 'lodash';
-import { checkSchema, SchemaErrorType } from '../src';
 import usersSchema from './schemas/users';
+import DeclarationTools from '../src';
+import checkSchema = DeclarationTools.checkSchema;
+import SchemaErrorType = DeclarationTools.SchemaErrorType;
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require('fs');
 

@@ -1,4 +1,5 @@
-import { Schema } from '../../src';
+import DeclarationTools from '../../src';
+import Schema = DeclarationTools.Schema;
 
 export const productsSchema: Schema = {
 	schema: {
