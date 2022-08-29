@@ -13,7 +13,7 @@
     "build-all": "yarn build-ts && yarn build-js"
   },
   "author": "Dmitry Orlov",
-  "license": "GPL-3.0-only",
+  "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.2",
     "@rollup/plugin-node-resolve": "^13.1.3",
